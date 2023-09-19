@@ -1,0 +1,9 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: Data_Sources_Lab_1
+    src: .
+    engine: python3.9
+    primary: true
+    run: gunicorn main:app
+    dev: .venv/Scripts/flask --app main run
