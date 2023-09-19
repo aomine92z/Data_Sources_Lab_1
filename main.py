@@ -9,7 +9,7 @@ def hello_world():
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-YGXM07M5ZJ');
+        gtag('config', 'UA-285804915-2');
     </script>
         """
     return prefix_google + "Hello World"
