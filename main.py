@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='template_folder')
 
 @app.route('/')
 def hello_world():
@@ -20,7 +20,7 @@ def hello_world():
 @app.route("/logger", methods=['GET', 'POST'])
 def logger_page():
     # Print a log on the browser
-    path_to_logger_html = "/templates/logger.html"
+    path_to_logger_html = '/logger.html'
     # print_on_browser = '<script>console.log("This is a log message on the browser.");</script>'
     if request.method == 'POST':
         message = request.form.get('message')  # Get the message from the form
