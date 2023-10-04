@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -17,10 +17,21 @@ def hello_world():
         """
     return prefix_google + "Hello World"
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route("/logger", methods=['GET', 'POST'])
+def logger_page():
+    # Print a log on the browser
+    path_to_logger_html = "/templates/logger.html"
+    # print_on_browser = '<script>console.log("This is a log message on the browser.");</script>'
+    if request.method == 'POST':
+        message = request.form.get('message')  # Get the message from the form
+        app.logger.warning(f"Received message: {message}")  # Log the message
+        return render_template(path_to_logger_html, message=message)  # Render the template with the message
+    return render_template(path_to_logger_html)  # Render the template without a message
 
 
 @app.route("/moon")
 def mechant():
     return "Hello from Space! 🚀"
+
+if __name__ == '__main__':
+    app.run(debug=True)

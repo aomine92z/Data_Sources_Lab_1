@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logger Page</title>
+</head>
+<body>
+    <form action="/logger" method="post">
+        <input type="text" name="message" placeholder="Enter your message">
+        <input type="submit" value="Submit">
+    </form>
+    {% if message %}
+        <div>
+            <h3>Message:</h3>
+            <p>{{ message }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
