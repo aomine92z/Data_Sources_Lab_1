@@ -6,7 +6,7 @@
 <body>
     <form action="/logger" method="post">
         <input type="text" name="message" placeholder="Enter your message">
-        <input type="submit" value="Submit">
+        <input id='trackbutton' type="submit" value="Submit">
     </form>
     {% if message %}
         <div>
@@ -14,5 +14,19 @@
             <p>{{ message }}</p>
         </div>
     {% endif %}
+
+    <!-- Ajout du nouveau bouton -->
+    <form action="/google_request" method="get">
+        <input type="submit" value="Google Request">
+    </form>
+
+    <!-- <script>
+        document.getElementById('trackbutton').addEventListener('click', function() {
+            fetch('/logger', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        });
+    </script> -->
 </body>
 </html>

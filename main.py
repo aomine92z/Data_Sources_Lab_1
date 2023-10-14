@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+import requests
 
 app = Flask(__name__, template_folder='template_folder')
 
@@ -28,6 +29,11 @@ def logger_page():
         return render_template(path_to_logger_html, message=message)  # Render the template with the message
     return render_template(path_to_logger_html)  # Render the template without a message
 
+
+@app.route("/google_request")
+def google_request():
+    req = requests.get("https://www.google.com/")
+    return req.cookies.get_dict()
 
 @app.route("/moon")
 def mechant():
